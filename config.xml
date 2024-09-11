@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+    <description>This is an example Jenkins pipeline job</description>
+    <keepDependencies>false</keepDependencies>
+    <properties>
+        <com.github.kohsuke.stapler.StaplerRequest>
+            <entry>
+                <string>git</string>
+                <string>https://github.com/xizon/fullstack-nextjs-app-template.git</string>
+            </entry>
+        </com.github.kohsuke.stapler.StaplerRequest>
+    </properties>
+    <scm class="hudson.plugins.git.GitSCM">
+        <configVersion>1</configVersion>
+        <userRemoteConfigs>
+            <hudson.plugins.git.UserRemoteConfig>
+                <url>https://github.com/xizon/fullstack-nextjs-app-template.git</url>
+            </hudson.plugins.git.UserRemoteConfig>
+        </userRemoteConfigs>
+        <branches>
+            <hudson.plugins.git.BranchSpec>
+                <name>*/main</name>
+            </hudson.plugins.git.BranchSpec>
+        </branches>
+        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+        <submoduleCfg class="list"/>
+        <extensions/>
+    </scm>
+    <triggers/>
+    <disabled>false</disabled>
+    <builders>
+        <hudson.plugins.workflow.Job>
+            <definition class="org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition">
+                <scm class="hudson.plugins.git.GitSCM">
+                    <configVersion>1</configVersion>
+                    <userRemoteConfigs>
+                        <hudson.plugins.git.UserRemoteConfig>
+                            <url>https://github.com/xizon/fullstack-nextjs-app-template.git</url>
+                        </hudson.plugins.git.UserRemoteConfig>
+                    </userRemoteConfigs>
+                    <branches>
+                        <hudson.plugins.git.BranchSpec>
+                            <name>*/main</name>
+                        </hudson.plugins.git.BranchSpec>
+                    </branches>
+                    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+                    <submoduleCfg class="list"/>
+                    <extensions/>
+                </scm>
+                <scriptPath>Jenkinsfile</scriptPath>
+            </definition>
+        </hudson.plugins.workflow.Job>
+    </builders>
+</project>

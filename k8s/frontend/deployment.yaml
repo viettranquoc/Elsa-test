@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: be-app
+  labels:
+    app: be-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: be-app
+  template:
+    metadata:
+      labels:
+        app: be-app
+    spec:
+      containers:
+        - name: frontend
+          image: your-docker-registry/your-image-name:latest
+          ports:
+            - containerPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: your-docker-registry/your-image-name:latest
+          ports:
+            - containerPort: 3000            
